@@ -28,27 +28,24 @@
     </nav>
 
     <div class="controls-cont">
-    <!--<div class="living-room">-->
 	    <h1>Living Room</h1>
-	    <img src="" alt"">
-            <div class="button-cont">
-	    	<Button id="on" onclick="lightOn();">On</Button>
-            	<button id="off" onclick="lightOff();">Off</button>
+	    <div class="image">
+            <img id="myImage" onclick="changeImage()" src="assets/bulboff.gif">
 	    </div>
-    <!--</div>-->
+        <div class="button-cont">
+	        <button id="on-button" onclick="lightOn();">On</button>
+        	<button id="off-button" onclick="lightOff();">Off</button>
+	    </div>
     </div>
-
-    <div class="image-cont-1">
-        
+    
+    <div class="footer">
+        <div class="i-am">
+            <p>Your home on your finger tips.</p>
+        </div>
+        <!-- <div class="i-am">
+            <p>I am a Developer.</p>
+        </div> -->
     </div>
-            <div class="footer">
-                <div class="i-am">
-                    <p>Your home on your finger tips.</p>
-                </div>
-                <!-- <div class="i-am">
-                    <p>I am a Developer.</p>
-                </div> -->
-            </div>
     <script src="./app.js"></script>
 </body>
 </html>
