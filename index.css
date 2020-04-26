@@ -46,8 +46,27 @@ nav {
 }
 
 .controls-cont {
-    width: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fafafa;
+    padding: 25px;
+    border-radius: 10px;
     margin-top: 50px;
+    font-family: sans-sarif;
+}
+h1 { width: 30%
+    color:gray;
+    font-size: 25px;
+    
+}
+img {
+    width: 30%;
+}
+.button-cont {
+    width: 30%;
 }
 
 .footer {

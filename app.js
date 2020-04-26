@@ -8,3 +8,12 @@ hamburger.addEventListener ('click', () => {
         link.classList.toggle('fade');
     });
 });
+
+
+var lightOn = function () {
+    console.log('Ligts on!');
+}
+
+var lightOff = function () {
+    console.log('Lights off!');
+}
