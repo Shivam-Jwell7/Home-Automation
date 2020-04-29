@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Automation</title>
-    <!-- <link rel="stylesheet" href="./style.css"> -->
-    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
-    <style>
-	*,html {
+<head>
+  <title>Home Automation</title>
+  <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
+  <style>
+    *,html {
     margin: 0px;
     padding: 0px;
 }
@@ -224,11 +220,10 @@ button {
         font-size: 1.2em;
     }
 }
-    </style>
-  </head>  
-
-  <body>
-  <nav>
+  </style>
+</head?
+<body>
+    <nav>
         <div class="nav-name">
             Home Automation
         </div>
@@ -240,79 +235,54 @@ button {
         <ul class="nav-links">
             <li><a href="#" class="active-page">Controls</a></li>
             <li><a href="#">Notes</a></li>
-            <!-- <li><a href="#">Projects</a></li> -->
             <li><a href="#">Events</a></li>
             <li><a href="./contact.html">Contact Us</a></li>
         </ul>
     </nav>
 
     <div class="controls-cont">
-	    <h1>Living Room</h1>
-	    <div class="image">
-            <img id="myImage" onclick="changeImage()" src="https://www.w3schools.com/js/pic_bulboff.gif">
-	    </div>
+	<h1>Living Room</h1>
+	<div class="image">
+            <img id="myImage" src="https://www.w3schools.com/js/pic_bulboff.gif">
+        </div>
         <div class="button-cont">
-	        <button id="light" onclick="lightOn();">On</button>
-        	<button id="off-button" onclick="lightOff();">Off</button>
-	    </div>
+	    <button type="button" id="state" onclick="LEDOn()">ON</button>
+    	    <button type="button" id="state" onclick="LEDOff()">OFF</button>
+	</div>
     </div>
     
     <div class="footer">
         <div class="i-am">
             <p>Your home on your finger tips.</p>
         </div>
-        <!-- <div class="i-am">
-            <p>I am a Developer.</p>
-        </div> -->
     </div>
-    
-  <!-- <script src="./app.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> <!-- include socket.io client side script -->
-  <script>
-    var socket = io(); //load socket.io-client and connect to the host that serves the page
-    window.addEventListener("load", function(){ //when page loads
-      var lightbox = document.getElementById("light");
-      var loghtOffBox = document.getElementById("off-button");
-      lightbox.addEventListener("click", function() { //add event listener for when checkbox changes
-        socket.emit("light", Number(this.click)); //send button status to server (as 1 or 0)
-      });
-      lightoffbox.addEventListener("click", function() { //add event listener for when checkbox changes
-        socket.emit("off-button", Number(this.click)); //send button status to server (as 1 or 0)
-      });
-    });
-    socket.on('light', function (data) { //get button status from client
-      document.getElementById("light").click = data; //change checkbox according to push button on Raspberry Pi
-      socket.emit("light", data); //send push button status to back to server
-    });
-    socket.off('off-button', function (data) { //get button status from client
-      document.getElementById("off-button").click = data; //change checkbox according to push button on Raspberry Pi
-      socket.emit("off-button"); //send push button status to back to server
-    });
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+      var socket = io.connect(); //load socket.io-client and connect to the host
+      var bulbImage = document.getElementById('myImage');
+      function LEDOn() {
+	  bulbImage.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+          socket.emit("state", 1); //send button state to server
+      }
 
-    <!-- UI related-->
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li');
+      function LEDOff() {
+	  bulbImage.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+          socket.emit("state", 0); //send button state to server
+      }
 
-    hamburger.addEventListener ('click', () => {
-        navLinks.classList.toggle('open');
-        links.forEach(link =>{
-            link.classList.toggle('fade');
+      <!--moobile-UI-->
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const links = document.querySelectorAll('.nav-links li');
+
+        hamburger.addEventListener ('click', () => {
+            navLinks.classList.toggle('open');
+            links.forEach(link =>{
+                link.classList.toggle('fade');
+            });
         });
-    });
+    </script>
+</body>
 
-    var bulbImage = document.getElementById('myImage')
-    var lightOn = function () {
-        console.log('Ligts on!');
-        bulbImage.src = "https://www.w3schools.com/js/pic_bulbon.gif";
-    
-    }
-    var lightOff = function () {
-        console.log('Lights off!');
-        bulbImage.src = "https://www.w3schools.com/js/pic_bulboff.gif";
-    }
-  </script>
-  
-  </body>
 </html>
